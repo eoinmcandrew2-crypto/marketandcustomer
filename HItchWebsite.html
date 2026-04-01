@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About/Product Details</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Hitch Logo</div>
+
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Financials</a>
+                <a href="#">Marketing</a>
+                <a href="#">Meet The Team</a>
+                <a href="#">About</a>
+                <a href="#">Contact Us</a>
+            <div class="logo">
+                <img src="hitch-logo.png" alt="Hitch Logo">
+            </div>
+
+            <div class="nav-links">
+                <a href="../HomePage/index.html">Home</a>
+                <a href="../Business_Financial/index.html">Financials</a>
+                <a href="../Market_Customer/index.html">Marketing</a>
+                <a href="../Team_Page/index.html">Meet The Team</a>
+                <a href="../About_Product/index.html">About</a>
+                <a href="../Contact/index.html">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="tagline">
+        <h1>Hitch<br> <span class="highlight"><i>I cant think of a second line</i></span></h1>
+        <img alt="image of a speeding train" src="pexels-cottonbro-5302805.jpg">
+    </section>
+
+    <main>
+        <section>
+            <div class="intro">
+                <h2>What makes Hitch different</h2>
+                <p>Unlike a taxi service where you pay an expensive fee each ride, on hitch you pay a monthly subscription 
+                    to get access to recomendations of drivers on our app who on their daily commute to college, bring others
+                    along with. 
+                </p>
+            </div>
+        </section>
+        <div class="container">
+            <div class="panel">
+            <h2>Social</h2>
+            <p>Meet new people in your area who have the same commute as you, what a great way to make new friends!</p>
+            </div>
+
+            <div class="panel">
+            <h2>Cost</h2>
+            <p>This service costs only 15euro a month! In comparison to the cheapest alternative to daily transport, Dublin
+                bus that is 267% more expensive than us. In addition the money from students stays with students, from drivers, to 
+                riders, to us.
+            </p>
+            </div>
+
+            <div class="panel">
+            <h2>Convience</h2>
+            <p>No need to walk to bus stops, change buses or trains, just hop in, join in and go on.</p>
+            </div>
+        </div>
+
+        <h2>Expense Breakdown</h2>
+        <table>
+            <tr>
+            <th>Quarter</th>
+            <th>Estimated Subscribers</th>
+            <th>Monthly Revenue</th>
+            <th>Quarterly Gross Revenue</th>
+            </tr>
+            <tr>
+                <td>Q1</td><td>20</td><td>€300</td><td>€900</td>
+            </tr>
+            <tr>
+                <td>Q2</td><td>50</td><td>€750</td><td>€2,250</td>
+            </tr>
+            <tr>
+                <td>Q3</td><td>100</td><td>€1,500</td><td>€4,500</td>
+            </tr>
+            <tr>
+                <td>Q4</td><td>150</td><td>€2,250</td><td>€6,750</td>
+            </tr>
+        </table>
+
+        <h2>Revenue and Growth</h2>
+        <table>
+            <tr>
+                <th>Expense</th>
+                <th>Startup</th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q3</th>
+                <th>Q4</th>
+            </tr>
+            <tr>
+                <td>Cloud Hosting (Supabase)</td>
+                <td>€0</td><td>€0</td><td>€66</td><td>€66</td><td>€66</td>
+            </tr>
+            <tr>
+                <td>Maps &amp; GPS API</td>
+                <td>€0</td><td>€0</td><td>€20</td><td>€20</td><td>€20</td>
+            </tr>
+            <tr>
+                <td>Stripe Fees (€0.73/payment)</td>
+                <td>€0</td><td>€43.80</td><td>€109.50</td><td>€219</td><td>€328.50</td>
+            </tr>
+            <tr>
+                <td>Marketing Fees</td>
+                <td>€450</td><td>€330</td><td>€330</td><td>€320</td><td>€320</td>
+            </tr>
+            <tr>
+                <td>Developer Costs @ avg €45/hr</td>
+                <td>€8,775</td><td>€1,125</td><td>€450</td><td>€450</td><td>€450</td>
+            </tr>
+        </table>
+
+        <section class="graph">
+            <h2>Net Cash Flow and Break Even</h2>
+            <canvas id="myChart" width="600" height="400"></canvas>
+        </section>
+
+        <section>
+            <h2>About</h2>
+            <p>Some information about this site.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 My Website</p>
+    </footer>
+
+    <script>
+        const values = [-9225, -8020, -5243, 1183, 16055];
+    
+        const ctx = document.getElementById('myChart').getContext('2d');
+    
+        new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Startup', 'Q1', 'Q2', 'Q3', 'Q4'],
+            datasets: [{
+            label: 'Cumulative Net Cash Flow (€)',
+            data: values,
+            backgroundColor: values.map(v => v < 0 ? '#e53935' : '#4caf50')
+            }]
+        },
+        options: {
+            plugins: {
+            legend: { display: false }
+            },
+            scales: {
+            y: {
+                ticks: {
+                callback: value => '€' + value.toLocaleString()
+                }
+            }
+            }
+        },
+        plugins: [{
+            id: 'breakEvenLine',
+            afterDraw(chart) {
+            const { ctx, scales: { y } } = chart;
+            const yZero = y.getPixelForValue(0);
+            ctx.save();
+            ctx.beginPath();
+            ctx.setLineDash([6, 4]);
+            ctx.moveTo(chart.chartArea.left, yZero);
+            ctx.lineTo(chart.chartArea.right, yZero);
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.fillStyle = 'red';
+            ctx.font = '12px Arial';
+            ctx.fillText('Break-even', chart.chartArea.right + 6, yZero + 4);
+            ctx.restore();
+            }
+        }]
+        });
+  </script>
+</body>
+</html>
