@@ -4,24 +4,24 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f9f9f9;
+    background-color: #fafafa;
 }
 
 /* ---------------- HERO ---------------- */
 .hero {
     text-align: center;
     padding: 80px 20px 60px 20px;
-    background-color: orange; /* brand color */
+    background-color: orange;
     color: white;
 }
 
 .hero img {
-    max-width: 120px;        /* professional size */
+    max-width: 120px;
     height: auto;
     display: block;
     margin: 0 auto 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* subtle depth */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .hero p {
@@ -30,16 +30,14 @@ body {
     margin: 0;
 }
 
-/* ---------------- MAIN CONTENT ---------------- */
+/* ---------------- CONTENT ---------------- */
 .content {
     max-width: 900px;
     margin: 50px auto;
-    padding: 0 20px;
-    text-align: left;
+    padding: 40px 30px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    padding: 40px 30px;
 }
 
 .content p {
@@ -89,10 +87,6 @@ footer {
 
     .hero p {
         font-size: 1.1rem;
-    }
-
-    .content {
-        padding: 20px 15px;
     }
 
     .content p {
